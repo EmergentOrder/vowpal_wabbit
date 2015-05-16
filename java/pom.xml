@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.EmergentOrder</groupId>
-    <artifactId>vw-jni-${os.name}-${os.arch}</artifactId>
+    <artifactId>vw-jni-${os.arch}</artifactId>
     <version>1.0.4-SNAPSHOT</version>
     <name>Vowpal Wabbit JNI Layer</name>
     <url>https://github.com/EmergentOrder/vowpal_wabbit</url>
@@ -239,4 +239,42 @@
 
 
     </distributionManagement>
+       <profiles>
+        <profile>
+            <id>mac</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <configuration>
+                            <classifier>mac</classifier> 
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Linux</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <configuration>
+                            <classifier>Linux</classifier>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
